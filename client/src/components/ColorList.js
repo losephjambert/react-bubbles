@@ -26,10 +26,8 @@ const ColorList = ({ colors, dispatch, handleDeleteColor, updateSuccess }) => {
 
   const saveEdit = e => {
     e.preventDefault();
-    console.log(colorToEdit);
     const body = { ...colorToEdit };
-    const params = { ...colorToEdit.id };
-
+    const params = { id: colorToEdit.id };
     updateColor(body, params, {
       start: payload => dispatch({ type: COLORS_UPDATE_START, payload }),
       success: payload => dispatch({ type: COLORS_UPDATE_SUCCESS, payload }),
