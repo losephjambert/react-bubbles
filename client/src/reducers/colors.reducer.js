@@ -5,6 +5,9 @@ import {
   COLORS_UPDATE_START,
   COLORS_UPDATE_SUCCESS,
   COLORS_UPDATE_ERROR,
+  COLORS_DELETE_START,
+  COLORS_DELETE_SUCCESS,
+  COLORS_DELETE_ERROR,
 } from '../actions';
 
 const initialState = {
@@ -18,6 +21,11 @@ const initialState = {
   },
   createColor: {
     isCreating: false,
+    error: null,
+  },
+  deleteColor: {
+    id: null,
+    isDeleting: false,
     error: null,
   },
 };
@@ -70,8 +78,8 @@ export default (state = initialState, action) => {
     case COLORS_UPDATE_START:
       return {
         ...state,
-        updateFriend: {
-          ...state.updateFriend,
+        updateColor: {
+          ...state.updateColor,
           isUpdating: true,
         },
       };
@@ -82,19 +90,49 @@ export default (state = initialState, action) => {
       return {
         ...state,
         colorsList: updatedColorsList,
-        updateFriend: {
-          ...state.updateFriend,
+        updateColor: {
+          ...state.updateColor,
           isUpdating: false,
-          editing: false,
           id: null,
         },
       };
     case COLORS_UPDATE_ERROR:
       return {
         ...state,
-        updateFriend: {
-          ...state.updateFriend,
+        updateColor: {
+          ...state.updateColor,
           isUpdating: false,
+          error: action.payload,
+        },
+      };
+    case COLORS_DELETE_START:
+      return {
+        ...state,
+        deleteColor: {
+          ...state.deleteColor,
+          isDeleting: true,
+        },
+      };
+    case COLORS_DELETE_SUCCESS:
+      const filteredColorsList = state.colorsList.filter(color => {
+        return color.id !== action.payload;
+      });
+      return {
+        ...state,
+        colorsList: filteredColorsList,
+        deleteColor: {
+          ...state.deleteColor,
+          isDeleting: false,
+          editing: false,
+          id: null,
+        },
+      };
+    case COLORS_DELETE_ERROR:
+      return {
+        ...state,
+        deleteColor: {
+          ...state.deleteColor,
+          isDeleting: false,
           error: action.payload,
         },
       };

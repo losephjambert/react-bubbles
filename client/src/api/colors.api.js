@@ -28,3 +28,18 @@ export const updateColor = async (body, params, actions, redirect = null) => {
     console.error(err);
   }
 };
+
+export const deleteColor = async (params, actions, redirect = null) => {
+  const { start, success, error } = actions;
+  start();
+  try {
+    const deleteColorResponse = await axiosWithAuth(API_ROOT).delete(`/colors/${params.id}`, { ...params });
+    console.log(deleteColorResponse);
+    success(deleteColorResponse.data);
+    redirect && redirect();
+  } catch (err) {
+    error(err);
+    console.log('Error editing friend. Please check the error log for more information.');
+    console.error(err);
+  }
+};

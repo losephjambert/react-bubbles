@@ -8,7 +8,7 @@ const initialColor = {
   code: { hex: '' },
 };
 
-const ColorList = ({ colors, updateColors, dispatch }) => {
+const ColorList = ({ colors, dispatch, handleDeleteColor }) => {
   console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
@@ -21,7 +21,6 @@ const ColorList = ({ colors, updateColors, dispatch }) => {
   const saveEdit = e => {
     e.preventDefault();
     console.log(colorToEdit);
-    // body, params, actions, redirect = null
     updateColor(
       { ...colorToEdit },
       { ...colorToEdit.id },
@@ -33,10 +32,6 @@ const ColorList = ({ colors, updateColors, dispatch }) => {
     );
   };
 
-  const deleteColor = color => {
-    // make a delete request to delete this color
-  };
-
   return (
     <div className='colors-wrap'>
       <p>colors</p>
@@ -44,7 +39,7 @@ const ColorList = ({ colors, updateColors, dispatch }) => {
         {colors.map(color => (
           <li key={color.color} onClick={() => editColor(color)}>
             <span>
-              <span className='delete' onClick={() => deleteColor(color)}>
+              <span className='delete' onClick={() => handleDeleteColor(color.id)}>
                 x
               </span>{' '}
               {color.color}
