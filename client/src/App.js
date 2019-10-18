@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './reducers';
 
-import Login from './components/Login';
+import Login from './components/auth/Login';
 import './styles.scss';
 
 function App() {

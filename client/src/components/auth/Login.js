@@ -16,7 +16,7 @@ const Login = props => {
 
   useEffect(() => {
     if (user.isLoggedIn) {
-      props.history.push('/friends');
+      props.history.push('/bubbles');
     }
   }, [user.isLoggedIn, props.history]);
 

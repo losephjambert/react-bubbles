@@ -1,5 +1,5 @@
-import { API_ROOT } from './api.config';
-import { axiosWithAuth } from './axiosWithAuth';
+import { API_ROOT } from './config.api';
+import { axiosWithAuth } from './axios.auth.api';
 
 export const login = async (credentials, actions) => {
   const { start, success, error } = actions;
