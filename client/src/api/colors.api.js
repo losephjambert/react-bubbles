@@ -19,7 +19,7 @@ export const updateColor = async (body, params, actions, redirect = null) => {
   start();
   try {
     const updateColorResponse = await axiosWithAuth(API_ROOT).put(`/colors/${params.id}`, body, { ...params });
-    console.log(updateColorResponse.data);
+    console.log(updateColorResponse);
     success(updateColorResponse.data);
     redirect && redirect();
   } catch (err) {
