@@ -51,31 +51,6 @@ export default (state = initialState, action) => {
         error: action.payload,
         isFetching: false,
       };
-    // case COLORS_CREATE_START:
-    //   return {
-    //     ...state,
-    //     createFriend: {
-    //       isCreating: true,
-    //       error: null,
-    //     },
-    //   };
-    // case COLORS_CREATE_SUCCESS:
-    //   return {
-    //     ...state,
-    //     colorsList: action.payload,
-    //     createFriend: {
-    //       isCreating: false,
-    //       error: null,
-    //     },
-    //   };
-    // case COLORS_CREATE_ERROR:
-    //   return {
-    //     ...state,
-    //     createFriend: {
-    //       isCreating: false,
-    //       error: action.payload,
-    //     },
-    //   };
     case COLORS_UPDATE_START:
       return {
         ...state,
