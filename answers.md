@@ -1,4 +1,7 @@
 1. Explain what a token is used for.
+
+A token is used to authenticate a user's session on a particular device. This could be an end user or an api attempting to authenticate with another api.
+
 2. What steps can you take in your web apps to keep your data secure?
 
 Never store secret information on the web app. This includes passwords, secret keys or tokens, or sensitive user information outside of a password.
