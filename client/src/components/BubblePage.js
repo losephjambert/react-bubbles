@@ -27,15 +27,12 @@ const BubblePage = () => {
   }, [dispatch]);
 
   const handleDeleteColor = id => {
-    console.log(id);
-    deleteColor(
-      { id },
-      {
-        start: payload => dispatch({ type: COLORS_DELETE_START, payload }),
-        success: payload => dispatch({ type: COLORS_DELETE_SUCCESS, payload }),
-        error: payload => dispatch({ type: COLORS_DELETE_ERROR, payload }),
-      }
-    );
+    const params = { id };
+    deleteColor(params, {
+      start: payload => dispatch({ type: COLORS_DELETE_START, payload }),
+      success: payload => dispatch({ type: COLORS_DELETE_SUCCESS, payload }),
+      error: payload => dispatch({ type: COLORS_DELETE_ERROR, payload }),
+    });
   };
 
   return (
