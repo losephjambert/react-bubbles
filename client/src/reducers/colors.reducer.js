@@ -76,9 +76,12 @@ export default (state = initialState, action) => {
         },
       };
     case COLORS_UPDATE_SUCCESS:
+      const updatedColorsList = state.colorsList.map(color => {
+        return color.id === action.payload.id ? action.payload : color;
+      });
       return {
         ...state,
-        colorsList: action.payload,
+        colorsList: updatedColorsList,
         updateFriend: {
           ...state.updateFriend,
           isUpdating: false,
