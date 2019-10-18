@@ -18,6 +18,7 @@ const initialState = {
     id: null,
     isUpdating: false,
     error: null,
+    updateSuccess: false,
   },
   createColor: {
     isCreating: false,
@@ -81,6 +82,7 @@ export default (state = initialState, action) => {
         updateColor: {
           ...state.updateColor,
           isUpdating: true,
+          updateSuccess: false,
         },
       };
     case COLORS_UPDATE_SUCCESS:
@@ -94,6 +96,7 @@ export default (state = initialState, action) => {
           ...state.updateColor,
           isUpdating: false,
           id: null,
+          updateSuccess: true,
         },
       };
     case COLORS_UPDATE_ERROR:
@@ -103,6 +106,7 @@ export default (state = initialState, action) => {
           ...state.updateColor,
           isUpdating: false,
           error: action.payload,
+          updateSuccess: false,
         },
       };
     case COLORS_DELETE_START:

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { updateColor } from '../api';
 import { COLORS_UPDATE_START, COLORS_UPDATE_SUCCESS, COLORS_UPDATE_ERROR } from '../actions';
@@ -8,10 +8,16 @@ const initialColor = {
   code: { hex: '' },
 };
 
-const ColorList = ({ colors, dispatch, handleDeleteColor }) => {
+const ColorList = ({ colors, dispatch, handleDeleteColor, updateSuccess }) => {
   console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
+
+  useEffect(() => {
+    if (updateSuccess) {
+      setEditing(false);
+    }
+  }, [updateSuccess]);
 
   const editColor = color => {
     setEditing(true);

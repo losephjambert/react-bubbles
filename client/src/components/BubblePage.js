@@ -40,7 +40,12 @@ const BubblePage = () => {
 
   return (
     <>
-      <ColorList colors={colors.colorsList} dispatch={dispatch} handleDeleteColor={handleDeleteColor} />
+      <ColorList
+        updateSuccess={colors.updateColor.updateSuccess}
+        colors={colors.colorsList}
+        dispatch={dispatch}
+        handleDeleteColor={handleDeleteColor}
+      />
       <Bubbles colors={colors.colorsList} />
     </>
   );
