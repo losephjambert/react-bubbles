@@ -13,3 +13,18 @@ export const getColors = async actions => {
     console.error(err);
   }
 };
+
+export const updateColor = async (body, params, actions, redirect = null) => {
+  const { start, success, error } = actions;
+  // start();
+  try {
+    const updateColorResponse = await axiosWithAuth(API_ROOT).put(`/colors/${params.id}`, body, { ...params });
+    console.log(updateColorResponse);
+    // success(updateColorResponse.data);
+    // redirect && redirect();
+  } catch (err) {
+    // error(err);
+    console.log('Error editing friend. Please check the error log for more information.');
+    console.error(err);
+  }
+};

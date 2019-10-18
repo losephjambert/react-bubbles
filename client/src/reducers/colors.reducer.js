@@ -1,4 +1,11 @@
-import { COLORS_FETCH_START, COLORS_FETCH_SUCCESS, COLORS_FETCH_ERROR } from '../actions';
+import {
+  COLORS_FETCH_START,
+  COLORS_FETCH_SUCCESS,
+  COLORS_FETCH_ERROR,
+  COLORS_UPDATE_START,
+  COLORS_UPDATE_SUCCESS,
+  COLORS_UPDATE_ERROR,
+} from '../actions';
 
 const initialState = {
   isFetching: false,
@@ -60,34 +67,34 @@ export default (state = initialState, action) => {
     //       error: action.payload,
     //     },
     //   };
-    // case COLORS_UPDATE_START:
-    //   return {
-    //     ...state,
-    //     updateFriend: {
-    //       ...state.updateFriend,
-    //       isUpdating: true,
-    //     },
-    //   };
-    // case COLORS_UPDATE_SUCCESS:
-    //   return {
-    //     ...state,
-    //     colorsList: action.payload,
-    //     updateFriend: {
-    //       ...state.updateFriend,
-    //       isUpdating: false,
-    //       editing: false,
-    //       id: null,
-    //     },
-    //   };
-    // case COLORS_UPDATE_ERROR:
-    //   return {
-    //     ...state,
-    //     updateFriend: {
-    //       ...state.updateFriend,
-    //       isUpdating: false,
-    //       error: action.payload,
-    //     },
-    //   };
+    case COLORS_UPDATE_START:
+      return {
+        ...state,
+        updateFriend: {
+          ...state.updateFriend,
+          isUpdating: true,
+        },
+      };
+    case COLORS_UPDATE_SUCCESS:
+      return {
+        ...state,
+        colorsList: action.payload,
+        updateFriend: {
+          ...state.updateFriend,
+          isUpdating: false,
+          editing: false,
+          id: null,
+        },
+      };
+    case COLORS_UPDATE_ERROR:
+      return {
+        ...state,
+        updateFriend: {
+          ...state.updateFriend,
+          isUpdating: false,
+          error: action.payload,
+        },
+      };
     default:
       return state;
   }

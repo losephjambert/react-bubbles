@@ -21,7 +21,7 @@ const BubblePage = () => {
 
   return (
     <>
-      <ColorList colors={colors.colorsList} /*updateColors={setColorList}*/ />
+      <ColorList colors={colors.colorsList} dispatch={dispatch} /*updateColors={setColorList}*/ />
       <Bubbles colors={colors.colorsList} />
     </>
   );
