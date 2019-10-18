@@ -6,7 +6,7 @@ export const getColors = async actions => {
   start();
   try {
     const bubblesResponse = await axiosWithAuth(API_ROOT).get('/colors');
-    success(bubblesResponse);
+    success(bubblesResponse.data);
   } catch (err) {
     error(err);
     console.log('Error logging in. Please check the error log for more information.');

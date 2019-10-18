@@ -1,18 +1,28 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import Bubbles from "./Bubbles";
-import ColorList from "./ColorList";
+import { getColors } from '../api';
+import { COLORS_FETCH_START, COLORS_FETCH_SUCCESS, COLORS_FETCH_ERROR } from '../actions';
+
+import Bubbles from './Bubbles';
+import ColorList from './ColorList';
 
 const BubblePage = () => {
-  const [colorList, setColorList] = useState([]);
-  // fetch your colors data from the server when the component mounts
-  // set that data to the colorList state property
+  const dispatch = useDispatch();
+  const colors = useSelector(state => state.colors);
+
+  useEffect(() => {
+    getColors({
+      start: payload => dispatch({ type: COLORS_FETCH_START, payload }),
+      success: payload => dispatch({ type: COLORS_FETCH_SUCCESS, payload }),
+      error: payload => dispatch({ type: COLORS_FETCH_ERROR, payload }),
+    });
+  }, [dispatch]);
 
   return (
     <>
-      <ColorList colors={colorList} updateColors={setColorList} />
-      <Bubbles colors={colorList} />
+      <ColorList colors={colors.colorsList} /*updateColors={setColorList}*/ />
+      <Bubbles colors={colors.colorsList} />
     </>
   );
 };
